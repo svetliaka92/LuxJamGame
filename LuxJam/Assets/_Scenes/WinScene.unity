@@ -605,6 +605,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayAgainButton
       objectReference: {fileID: 0}
+    - target: {fileID: 689574321975634282, guid: a4e39f207d9e1cf47a4b8062ca798c2f,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.8773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 689574321975634282, guid: a4e39f207d9e1cf47a4b8062ca798c2f,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.8773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 689574321975634282, guid: a4e39f207d9e1cf47a4b8062ca798c2f,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.47592562
+      objectReference: {fileID: 0}
     - target: {fileID: 689574321975634283, guid: a4e39f207d9e1cf47a4b8062ca798c2f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -689,6 +704,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainMenuButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 689574322490081647, guid: a4e39f207d9e1cf47a4b8062ca798c2f,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.8773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 689574322490081647, guid: a4e39f207d9e1cf47a4b8062ca798c2f,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.8773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 689574322490081647, guid: a4e39f207d9e1cf47a4b8062ca798c2f,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.47592562
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4e39f207d9e1cf47a4b8062ca798c2f, type: 3}

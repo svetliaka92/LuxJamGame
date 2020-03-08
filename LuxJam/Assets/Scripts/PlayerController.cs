@@ -38,7 +38,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "LightPoint")
+        LightPoint post = other.GetComponentInParent<LightPoint>();
+        if (other.tag == "LightPoint" && post != null && post.isEnabled)
             _isInLight = true;
         else if (other.tag == "ShadePoint")
             UpdateShadeState(true);
@@ -73,6 +74,11 @@ public class PlayerController : MonoBehaviour
             return;
 
         controller.FixedTick();
+    }
+
+    public void UpdateInLight(bool flag)
+    {
+        _isInLight = flag;
     }
 
     private void UpdateMeters()
@@ -120,7 +126,8 @@ public class PlayerController : MonoBehaviour
     {
         if (shartType == ShardType.small)
         {
-            lightMeter.UseMeter(25);
+            float newMeter = lightMeter.MeterValue + 25f;
+            lightMeter.UseMeter(newMeter);
 
             CheckForPain(10);
 
@@ -128,7 +135,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (shartType == ShardType.medium)
         {
-            lightMeter.UseMeter(50);
+            float newMeter = lightMeter.MeterValue + 50f;
+            lightMeter.UseMeter(newMeter);
 
             CheckForPain(20);
 
@@ -136,7 +144,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (shartType == ShardType.large)
         {
-            lightMeter.UseMeter(90);
+            float newMeter = lightMeter.MeterValue + 100f;
+            lightMeter.UseMeter(newMeter);
 
             CheckForPain(30);
 

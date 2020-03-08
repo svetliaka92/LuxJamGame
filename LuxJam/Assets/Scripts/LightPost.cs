@@ -16,12 +16,6 @@ public class LightPost : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        // depending on the post type give the respective shard
-        // metal post gives large shard
-        // wooden post gives medium shard
-        // decayed post gives small shard
-        // decayed post also loses it's power if drained into a shard
-        print("Post");
         onInteract?.Invoke();
     }
 
