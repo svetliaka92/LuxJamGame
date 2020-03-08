@@ -64,18 +64,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
         // Update is called once per frame
-        private void Update()
+        public void Tick()
         {
-            if (_isDead)
-                return;
-
             GetInput();
             RotateView();
             // the jump state needs to read here to make sure it is not missed
-            if (!m_Jump)
-            {
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-            }
+            //if (!m_Jump)
+            //{
+            //    m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+            //}
 
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
             {
@@ -99,11 +96,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_NextStep = m_StepCycle + .5f;
         }
 
-        private void FixedUpdate()
+        public void FixedTick()
         {
-            if (_isDead)
-                return;
-
             // always move along the camera forward as it is the direction that it being aimed at
             Vector3 desiredMove = transform.forward*m_Input.y + transform.right*m_Input.x;
 
@@ -138,7 +132,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             ProgressStepCycle(_speed);
             UpdateCameraPosition(_speed);
 
-            m_MouseLook.UpdateCursorLock();
+            //m_MouseLook.UpdateCursorLock();
         }
 
         public void UpdateIsDead(bool flag)

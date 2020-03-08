@@ -40,7 +40,7 @@ public class Meter : MonoBehaviour
 
     public void Test()
     {
-        _meterValue = 100;
+        _meterValue = 90;
 
         UpdateMeterUI();
     }

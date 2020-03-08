@@ -5,10 +5,10 @@ public class Ability : MonoBehaviour
     public AbilityType aType;
     public bool canCast = true;
 
-    protected int[] chargeStages = { 0, 1, 2, 3, 4, 5 };
-    protected int[] stageDurations = { 5, 8, 11, 14, 17, 20 };
-    protected float[] aLightCosts = { 2, 4, 8, 13, 16, 20 };
-    protected float[] aFatigueCosts = { 2, 4, 9, 15, 21, 27 };
+    [SerializeField] protected int[] chargeStages = { 0, 1, 2, 3, 4, 5 };
+    [SerializeField] protected int[] stageDurations = { 5, 8, 11, 14, 17, 20 };
+    [SerializeField] protected float[] aLightCosts = { 2, 4, 8, 13, 16, 20 };
+    [SerializeField] protected float[] aFatigueCosts = { 2, 4, 9, 15, 21, 27 };
 
     protected int chargeStage = 0;
 

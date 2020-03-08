@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class AbilityManager : MonoBehaviour
 {
-    [SerializeField] private BuffUI buffUI;
     [SerializeField] private Meter lightMeter;
     [SerializeField] private Meter fatigueMeter;
     [SerializeField] private Ability currentAbility;
@@ -80,15 +79,11 @@ public class AbilityManager : MonoBehaviour
     public void OnAbilityCast(AbilityType type, float duration, float fatigue)
     {
         onAbilityCastEvent?.Invoke(type, duration, fatigue);
-
-        buffUI.OnBuffStart(type);
     }
 
     public void OnAbilityExpire(AbilityType type)
     {
         currentAbility.OnAbilityCD();
-
-        buffUI.OnBuffExpire();
     }
 
     private void ResetHeldTime()

@@ -54,10 +54,25 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (isDead)
+        if (isDead
+            || GameManager.Instance.IsPaused)
             return;
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+            GameManager.Instance.PauseGame();
+
         UpdateMeters();
+
+        controller.Tick();
+    }
+
+    private void FixedUpdate()
+    {
+        if (isDead
+            || GameManager.Instance.IsPaused)
+            return;
+
+        controller.FixedTick();
     }
 
     private void UpdateMeters()
@@ -77,10 +92,14 @@ public class PlayerController : MonoBehaviour
             CheckShadowMeter();
         }
 
-        //debug
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.T))
+        {
             lightMeter.Test();
+            shadowMeter.Test();
+            fatigueMeter.Test();
+            painMeter.Test();
+        }
 #endif
     }
 
@@ -131,15 +150,13 @@ public class PlayerController : MonoBehaviour
         {
             isDead = true;
             controller.UpdateIsDead(isDead);
+            GameManager.Instance.LoseGame();
         }
     }
 
     private void OnAbilityUse(AbilityType type, float duration, float fatigue)
     {
-        // do ability
         _playerBuffManager.AddBuff(type, duration);
-
-        print(fatigue);
         CheckForPain(fatigue);
     }
 
@@ -151,7 +168,6 @@ public class PlayerController : MonoBehaviour
     private void CheckForPain(float fatigueIncrease)
     {
         float fatigueOverflow = (fatigueMeter.MeterValue + fatigueIncrease) - 100;
-        print(fatigueOverflow);
         if (fatigueOverflow > 0)
             painMeter.UseMeter(fatigueOverflow);
 
@@ -160,8 +176,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnPainMeterUpdate()
     {
-        //..
-
         if (controller)
             controller.UpdateMaxSpeed(painMeter.MeterValue);
     }

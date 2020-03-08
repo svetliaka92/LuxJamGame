@@ -10,6 +10,7 @@ class Buff
 
     private bool canTick = false;
 
+    public float percentDuration;
     public event Action<AbilityType> onBuffExpire;
 
     public Buff(AbilityType type, float duration)
@@ -20,6 +21,7 @@ class Buff
 
     public void Start()
     {
+        timer = 0f;
         canTick = true;
     }
 
@@ -29,6 +31,7 @@ class Buff
             return;
 
         timer += Time.deltaTime;
+        percentDuration = timer / duration;
 
         if (timer >= duration)
             Expire();

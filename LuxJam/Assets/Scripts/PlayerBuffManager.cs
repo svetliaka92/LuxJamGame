@@ -4,6 +4,8 @@ using UnityEngine;
 
 public partial class PlayerBuffManager : MonoBehaviour
 {
+    [SerializeField] private BuffUI buffUI;
+
     private PlayerController _controller;
     private List<Buff> activeBuffs = new List<Buff>();
 
@@ -22,6 +24,8 @@ public partial class PlayerBuffManager : MonoBehaviour
 
         if (type == AbilityType.shield)
             _controller.UpdateShieldState(true);
+
+        buffUI.OnBuffStart(type);
     }
 
     private void OnBuffExpire(AbilityType type)
@@ -30,11 +34,16 @@ public partial class PlayerBuffManager : MonoBehaviour
 
         if (type == AbilityType.shield)
             _controller.UpdateShieldState(false);
+
+        buffUI.OnBuffExpire();
     }
 
     private void Update()
     {
         foreach (Buff buff in activeBuffs)
+        {
             buff.Tick();
+            buffUI.UpdateState(buff.percentDuration);
+        }
     }
 }

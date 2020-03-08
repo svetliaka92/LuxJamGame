@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerRaycastHandler : MonoBehaviour
 {
+    [SerializeField] private GameObject cursorPoint;
     [SerializeField] private CameraRaycaster _cameraRaycaster;
 
     private IInteractable _interactable;
@@ -23,8 +24,19 @@ public class PlayerRaycastHandler : MonoBehaviour
             if (interactable != null)
             {
                 interactable.Hover();
+
+                UpdatePlayerUI(true);
             }
+            else
+                UpdatePlayerUI(false);
         }
+        else
+            UpdatePlayerUI(false);
+    }
+
+    private void UpdatePlayerUI(bool flag)
+    {
+        cursorPoint.SetActive(flag);
     }
 
     private void HandleInteract()
